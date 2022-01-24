@@ -96,3 +96,36 @@ bool checkDataDir(string arg1) {
 		std::exit(1);
 	}
 }
+
+
+void ListDir(string prompt) {
+	string firstCharPrompt = prompt.substr(0, 1);
+	path files[100];
+	int i1 = 0;
+	string pathToLook = pathString;
+	pathToLook.append("\\C_DRIVE");
+	for (const auto& entry : directory_iterator(pathToLook)) {
+		files[i1] = entry.path();
+		i1++;
+	}
+	for (int i = 0; i < i1; i++) {
+		string pathStr = files[i].string();
+		string find;
+		if (firstCharPrompt == "A") {
+			find = "A_DRIVE";
+		}
+		if (firstCharPrompt == "B") {
+			find = "B_DRIVE";
+		}
+		if (firstCharPrompt == "C") {
+			find = "C_DRIVE";
+		}
+		size_t pos = pathStr.find(find);
+		string pathSubStr = pathStr.substr(pos + 8);
+		string fullPathStr = firstCharPrompt;
+		fullPathStr.append(":\\");
+		fullPathStr.append(pathSubStr);
+		fullPathStr.append("\r\n");
+		cout << fullPathStr;
+	}
+}

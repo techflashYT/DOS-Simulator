@@ -8,6 +8,7 @@
 #include <string>
 #include <sys/stat.h>
 #include <fstream>
+#include <sstream>
 
 
 //#include <windows.h>
@@ -22,3 +23,5 @@ using std::cout;
 using std::cin;
 using std::ifstream;
 using std::ofstream;
+using std::filesystem::directory_iterator;
+using std::stringstream;
