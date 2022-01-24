@@ -1,21 +1,26 @@
 #include "inc/main.h"
 
-string prompt = "";
+int main(int argc, char** argv) {
 
-
-int main() {
 	cout << "===========DOS SIMULATOR LOADING===========\r\n";
+	string prompt = "";
+	string arg1 = "";
 
+	if (argc >= 2) { // 1 argument
+		arg1 = argv[1];
+	}
 	bool KbdReady;
 	bool MouseReady;
 	bool AllReady;
 	bool DataDirExists;
-	int tries = 0;
+	int tries;
 
 
 	KbdReady = MouseReady = DataDirExists = AllReady = false;
 
-	DataDirExists = checkDataDir();
+	tries = 0;
+
+	DataDirExists = checkDataDir(arg1);
 
 	while (!AllReady) {
 		if (!(tries >= 3)) {
