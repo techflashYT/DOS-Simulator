@@ -18,12 +18,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\keyboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\CMD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,19 +32,16 @@
     <ClInclude Include="src\inc\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\inc\keyboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\inc\CMD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\inc\mouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\inc\loop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\inc\FileActions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\inc\defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
