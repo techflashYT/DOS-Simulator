@@ -24,3 +24,6 @@
 .vs/DOS/v17/ipch/AutoPCH/da3e1f87cdfe4e60/LOOP.ipch filter=lfs diff=lfs merge=lfs -text
 .vs/DOS/v17/ipch/AutoPCH/dc3849502f6199de/FILEACTIONS.ipch filter=lfs diff=lfs merge=lfs -text
 .vs/DOS/v17/ipch/AutoPCH/ed68e3d0720c1d5e/KEYBOARD.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/85b4aa217cf148df/DOWNLOADASSETS.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/9195808f2ea5ad52/DOWNLOADASSETS.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/abbcd58332bd94bb/MAIN.ipch filter=lfs diff=lfs merge=lfs -text
