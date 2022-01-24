@@ -27,6 +27,9 @@
     <ClCompile Include="src\FileActions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\downloadAssets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\inc\main.h">
@@ -44,5 +47,17 @@
     <ClInclude Include="src\inc\defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\inc\libs\LiteUnzip\LiteUnzip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\inc\downloadAssets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\inc\libs\LiteUnzip\LiteUnzip.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="src\inc\libs\LiteUnzip\LiteUnzip.lib" />
   </ItemGroup>
 </Project>

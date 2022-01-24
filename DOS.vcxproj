@@ -150,16 +150,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\CMD.cpp" />
+    <ClCompile Include="src\downloadAssets.cpp" />
     <ClCompile Include="src\FileActions.cpp" />
     <ClCompile Include="src\loop.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\inc\CMD.h" />
+    <ClInclude Include="src\inc\downloadAssets.h" />
     <ClInclude Include="src\inc\FileActions.h" />
     <ClInclude Include="src\inc\defines.h" />
+    <ClInclude Include="src\inc\libs\LiteUnzip\LiteUnzip.h" />
     <ClInclude Include="src\inc\loop.h" />
     <ClInclude Include="src\inc\main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\inc\libs\LiteUnzip\LiteUnzip.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="src\inc\libs\LiteUnzip\LiteUnzip.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
