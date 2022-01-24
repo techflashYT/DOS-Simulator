@@ -15,36 +15,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="keyboard.cpp">
+    <ClCompile Include="src\keyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mouse.cpp">
+    <ClCompile Include="src\mouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CMD.cpp">
+    <ClCompile Include="src\CMD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="loop.cpp">
+    <ClCompile Include="src\loop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileActions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\main.h">
+    <ClInclude Include="src\inc\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\keyboard.h">
+    <ClInclude Include="src\inc\keyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\CMD.h">
+    <ClInclude Include="src\inc\CMD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\mouse.h">
+    <ClInclude Include="src\inc\mouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\loop.h">
+    <ClInclude Include="src\inc\loop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\inc\FileActions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
