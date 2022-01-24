@@ -13,4 +13,4 @@ using std::string;
 
 
 
-void interpretCommand(string command);
+void interpretCommand(string command, string* prompt);

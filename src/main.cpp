@@ -18,11 +18,11 @@ int main(int argc, char** argv) {
 
 	tries = 0;
 
-	DataDirExists = checkDataDir(arg1);
 
 	while (!AllReady) {
 		if (!(tries >= 3)) {
 			prompt = initCommandLine();
+			DataDirExists = checkDataDir(arg1);
 			tries++;
 		}
 		else {

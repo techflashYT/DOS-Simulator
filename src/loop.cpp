@@ -11,6 +11,6 @@ void loop(string prompt) {
 		cin.getline(commandChars, 100);
 		// Before we do anything with that command, convert it to an std::string
 		string command = commandChars;
-		interpretCommand(command);
+		interpretCommand(command, &prompt);
 	}
 }
