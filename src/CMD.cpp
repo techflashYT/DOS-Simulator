@@ -12,9 +12,9 @@ string initCommandLine() {
 }
 
 
-void interpretCommand(string command) {
+void interpretCommand(string command, string prompt) {
 	if (command == "dir") {
-		// run dir command
+		ListDir(prompt);
 	}
 	else if (command == "ls") {
 		cout << "Unknown command!  Did you mean \"dir\"?\r\n";

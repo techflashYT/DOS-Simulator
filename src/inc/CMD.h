@@ -7,3 +7,5 @@
 
 using std::string;
 using std::cout;
+
+void ListDir(string prompt);
