@@ -9,14 +9,12 @@ int main(int argc, char** argv) {
 	if (argc >= 2) { // 1 argument
 		arg1 = argv[1];
 	}
-	bool KbdReady;
-	bool MouseReady;
 	bool AllReady;
 	bool DataDirExists;
 	int tries;
 
 
-	KbdReady = MouseReady = DataDirExists = AllReady = false;
+	DataDirExists = AllReady = false;
 
 	tries = 0;
 
@@ -24,8 +22,6 @@ int main(int argc, char** argv) {
 
 	while (!AllReady) {
 		if (!(tries >= 3)) {
-			KbdReady = initKbd();
-			MouseReady = initMouse();
 			prompt = initCommandLine();
 			tries++;
 		}
@@ -34,7 +30,7 @@ int main(int argc, char** argv) {
 			return 1;
 		}
 
-		if (KbdReady && MouseReady && prompt != "") {
+		if (DataDirExists && prompt != "") {
 			AllReady = true;
 		}
 	}
