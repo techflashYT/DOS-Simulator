@@ -10,9 +10,13 @@
 #include <fstream>
 #include <sstream>
 
+#ifdef _WIN32
+#include <direct.h>
+#else
+#include <unistd.h>
+#endif
 
-//#include <windows.h>
-//#include <Lmcons.h>
+bool downloadAssets();
 
 using std::string;
 using std::filesystem::path;
