@@ -12,9 +12,9 @@ string initCommandLine() {
 }
 
 
-void interpretCommand(string command, string prompt) {
+void interpretCommand(string command, string *prompt) {
 	if (command == "dir") {
-		ListDir(prompt);
+		ListDir(*prompt);
 	}
 	else if (command == "ls") {
 		cout << "Unknown command!  Did you mean \"dir\"?\r\n";
@@ -42,8 +42,19 @@ void interpretCommand(string command, string prompt) {
 		std::exit(0);
 	}
 	else if (command == "ver") {
-		cout << "DOS Simulator version " << ver << "\r\n";
+		cout << "DOS Simulator v" << ver << "\r\n";
 	}
+
+	else if (command == "A:") {
+		*prompt = "A:\\>";
+	}
+	else if (command == "B:") {
+		*prompt = "B:\\>";
+	}
+	else if (command == "C:") {
+		*prompt = "C:\\>";
+	}
+
 	else {
 		cout << "Unknown command, " << command << "!\r\n";
 	}
