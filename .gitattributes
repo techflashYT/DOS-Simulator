@@ -15,3 +15,12 @@
 .vs/DOS/v17/ipch/AutoPCH/ac57f38d6f56cf59/CMD.ipch filter=lfs diff=lfs merge=lfs -text
 .vs/DOS/v17/ipch/AutoPCH/adcf232f22985c2e/MOUSE.ipch filter=lfs diff=lfs merge=lfs -text
 .vs/DOS/v17/ipch/AutoPCH/d0d4baa641f0d167/LOOP.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/4657d3859c692e76/CMD.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/4b9839026b1ccb4e/MAIN.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/bb90adb6f647b6db/FILEACTIONS.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/bc3cc97e5fa941eb/CMD.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/c4c81d4b21ce7101/LOOP.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/cb1e8b2d9e51c85d/MOUSE.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/da3e1f87cdfe4e60/LOOP.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/dc3849502f6199de/FILEACTIONS.ipch filter=lfs diff=lfs merge=lfs -text
+.vs/DOS/v17/ipch/AutoPCH/ed68e3d0720c1d5e/KEYBOARD.ipch filter=lfs diff=lfs merge=lfs -text
