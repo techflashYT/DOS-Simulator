@@ -1,6 +1,9 @@
 #pragma once
 
-#include <string>
+#include "defines.h"
 
+#include <string>
+#include <iostream>
 
 using std::string;
+using std::cout;
