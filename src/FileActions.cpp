@@ -26,58 +26,44 @@ bool checkDataDir(string arg1) {
 	}
 	unamefile.close();
 	system("rmdir /Q /S C:\\Temp");
-	pathString = "C:\\Users\\";
-	pathString.append(username);
-	pathString.append("\\Appdata\\Roaming\\Sanikdah Software");
+	pathString = "C:\\Users\\" + username + "\\Appdata\\Roaming\\Sanikdah Software";
 	a = pathString;
 	if (stat(a.c_str(), &b) != 0) {
-		string cmd = "mkdir \"";
-		cmd.append(pathString);
-		cmd.append("\"");
+		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	pathString.append("\\DOS Simulator");
 	a = pathString;
 	if (stat(a.c_str(), &b) != 0) {
-		string cmd = "mkdir \"";
-		cmd.append(pathString);
-		cmd.append("\"");
+		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	origPath = pathString;
 	pathString.append("\\A_DRIVE");
 	a = pathString;
 	if (stat(a.c_str(), &b) != 0) {
-		string cmd = "mkdir \"";
-		cmd.append(pathString);
-		cmd.append("\"");
+		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	pathString = origPath;
 	pathString.append("\\B_DRIVE");
 	a = pathString;
 	if (stat(a.c_str(), &b) != 0) {
-		string cmd = "mkdir \"";
-		cmd.append(pathString);
-		cmd.append("\"");
+		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	pathString = origPath;
 	pathString.append("\\C_DRIVE");
 	a = pathString;
 	if (stat(a.c_str(), &b) != 0) {
-		string cmd = "mkdir \"";
-		cmd.append(pathString);
-		cmd.append("\"");
+		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	pathString = origPath;
 	pathString.append("\\CONFIG");
 	a = pathString;
 	if (stat(a.c_str(), &b) != 0) {
-		string cmd = "mkdir \"";
-		cmd.append(pathString);
-		cmd.append("\"");
+		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	pathString = origPath;
@@ -96,8 +82,7 @@ bool checkDataDir(string arg1) {
 		pathString = "/root/Sanikdah Software/";
 	}
 	else {
-		pathString.append(username);
-		pathString.append("/Sanikdah Software/");
+		pathString.append(username + "Sanikdah Software");
 	}
 #endif
 
@@ -109,22 +94,14 @@ bool checkDataDir(string arg1) {
 	if (is_regular_file(path, ec)) {
 		cerr << "The data directory is a file!  Deleting it...\r\n";
 #ifdef _WIN32
-		string cmd = "del \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "del \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\n";
 		system("pause");
 		std::exit(0);
 #else
-		string cmd = "rm \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "rm \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\nPress any key to continue...";
 		system("read -n1 key");
 		std::exit(0);
@@ -144,22 +121,14 @@ bool checkDataDir(string arg1) {
 	if (is_regular_file(path, ec)) {
 		cerr << "The A drive directory is a file!  Deleting it...\r\n";
 #ifdef _WIN32
-		string cmd = "del \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "del \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\n";
 		system("pause");
 		std::exit(0);
 #else
-		string cmd = "rm \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "rm \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\nPress any key to continue...";
 		system("read -n1 key");
 		std::exit(0);
@@ -180,22 +149,14 @@ bool checkDataDir(string arg1) {
 	if (is_regular_file(path, ec)) {
 		cerr << "The B drive directory is a file!  Deleting it...\r\n";
 #ifdef _WIN32
-		string cmd = "del \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "del \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\n";
 		system("pause");
 		std::exit(0);
 #else
-		string cmd = "rm \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "rm \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\nPress any key to continue...";
 		system("read -n1 key");
 		std::exit(0);
@@ -215,22 +176,14 @@ bool checkDataDir(string arg1) {
 	if (is_regular_file(path, ec)) {
 		cerr << "The C drive directory is a file!  Deleting it...\r\n";
 #ifdef _WIN32
-		string cmd = "del \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "del \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\n";
 		system("pause");
 		std::exit(0);
 #else
-		string cmd = "rm \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "rm \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\nPress any key to continue...";
 		system("read -n1 key");
 		std::exit(0);
@@ -250,22 +203,14 @@ bool checkDataDir(string arg1) {
 	if (is_regular_file(path, ec)) {
 		cerr << "The config directory is a file!  Deleting it...\r\n";
 #ifdef _WIN32
-		string cmd = "del \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "del \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\n";
 		system("pause");
 		std::exit(0);
 #else
-		string cmd = "rm \"";
-		cmd.append(pathString);
-		cmd.append("\"");
-		char cmd1[100];
-		strcpy_s(cmd1, cmd.c_str());
-		system(cmd1);
+		string cmd = "rm \"" + pathString + "\"";
+		system(cmd.c_str());
 		cout << "Done!  Please restart the program!\r\nPress any key to continue...";
 		system("read -n1 key");
 		std::exit(0);
@@ -278,23 +223,18 @@ bool checkDataDir(string arg1) {
 
 	if (MAIN_DIR_GOOD && CONFIG_DIR_GOOD) {
 		// Check for ASSETSDOWNLOADED file
-		pathString = origPath;
-		pathString.append("\\CONFIG\\ASSETSDOWNLOADED");
+		pathString = origPath + "\\CONFIG\\ASSETSDOWNLOADED";
 		path = pathString; // Constructing the path from a string is possible.
 		if (is_directory(path, ec)) {
 			cerr << "A config file is a directory!  Deleting it...\r\n";
 #ifdef _WIN32
-			string cmd = "rmdir \"";
-			cmd.append(pathString);
-			cmd.append("\"");
+			string cmd = "rmdir \"" + pathString + "\"";
 			system(cmd.c_str());
 			cout << "Done!  Please restart the program!\r\n";
 			system("pause");
 			std::exit(0);
 #else
-			string cmd = "rm -rf \"";
-			cmd.append(pathString);
-			cmd.append("\"");
+			string cmd = "rm -rf \"" + pathString + "\"";
 			system(cmd.c_str());
 			cout << "Done!  Please restart the program!\r\nPress any key to continue...";
 			system("read -n1 key");
@@ -319,8 +259,7 @@ bool checkDataDir(string arg1) {
 		ASSETS_DOWNLOADED = downloadAssets();
 		if (ASSETS_DOWNLOADED) {
 			// Assets are now downloaded, so set the file in the config dir.
-			string assetsFileLoc = origPath;
-			assetsFileLoc.append("\\CONFIG\\ASSETSDOWNLOADED");
+			string assetsFileLoc = origPath + "\\CONFIG\\ASSETSDOWNLOADED";
 			ofstream assetsDownloadedFile(assetsFileLoc, std::ios::out);
 			assetsDownloadedFile.close();
 		}
@@ -337,8 +276,7 @@ void ListDir(string prompt) {
 	path files[100];
 	int i1 = 0;
 	string pathToLook = pathString;
-	string find;
-	find = "DRIVE";
+	string find = "DRIVE";
 	size_t pos = pathToLook.find(find);
 #ifdef _WIN32
 	void(_chdir(origPath.c_str()));
