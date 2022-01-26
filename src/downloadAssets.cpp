@@ -5,11 +5,11 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream) {
     return written;
 }
 bool downloadAssets() {
+    cout << "=============DOWNLOADING ASSETS============\r\n";
+    CURL* curl_handle;
+    static const char* pagefilename = "list.txt";
+    FILE* pagefile;
     try {
-        CURL* curl_handle;
-        static const char* pagefilename = "list.txt";
-        FILE* pagefile;
-
 
         curl_global_init(CURL_GLOBAL_ALL);
 
@@ -17,10 +17,7 @@ bool downloadAssets() {
         curl_handle = curl_easy_init();
 
         /* set URL to get here */
-        curl_easy_setopt(curl_handle, CURLOPT_URL, "https://github.com/sanikdah/DOS-Simulator/assets/list.txt");
-
-        /* Switch on full protocol/debug output while testing */
-        curl_easy_setopt(curl_handle, CURLOPT_VERBOSE, 1L);
+        curl_easy_setopt(curl_handle, CURLOPT_URL, "https://raw.githubusercontent.com/sanikdah/DOS-Simulator/main/assets/list.txt");
 
         /* disable progress meter, set to 0L to enable it */
         curl_easy_setopt(curl_handle, CURLOPT_NOPROGRESS, 1L);
@@ -30,6 +27,12 @@ bool downloadAssets() {
 
         /* open the file */
         pagefile = fopen(pagefilename, "wb");
+    }
+    catch (...) {
+        cerr << "Failed to set up the downloader!   Exiting...\r\n";
+        exit(1);
+    }
+    try {
         if (pagefile) {
 
             /* write the page body to this file handle */
@@ -51,4 +54,5 @@ bool downloadAssets() {
         cerr << "Error occurred trying to download assets for the program!  Exiting...\r\n";
         exit(1);
     }
+    return true;
 }
