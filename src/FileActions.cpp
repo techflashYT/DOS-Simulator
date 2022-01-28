@@ -368,10 +368,16 @@ USI ChangeDir(string dir, string *prompt) {
 	(void)_chdir(CD_DIR.c_str());
 	changedDir = true;
 #else
-	string CD_DIR = origPath + "/" + firstCharPrompt + "_DRIVE/" + SIM_WORKING_DIR + "/" + dir;
+	if (SIM_WORKING_DIR == "") {
+		CD_DIR = origPath + "/" + firstCharPrompt + "_DRIVE/" + dir;
+	}
+	else {
+		CD_DIR = origPath + "/" + firstCharPrompt + "_DRIVE/" + SIM_WORKING_DIR + "/" + dir;
+	}
 	if (stat(CD_DIR.c_str(), &b) != 0) {
 		// doesn't exist, throw error
 		return WARNING_NONEXISTENT_DIRECTORY;
+}
 	}
 	(void)chdir(CD_DIR.c_str());
 	changedDir = true;
