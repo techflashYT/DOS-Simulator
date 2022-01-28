@@ -3,14 +3,14 @@
 char commandChars[101] = "";
 
 
-void loop(string prompt) {
+void loop(string *prompt) {
 	while (true) {
-		cout << prompt;
+		cout << *prompt;
 		cin.clear();
 		cin.sync();
-		cin.getline(commandChars, 100);
+		cin.getline(commandChars, MAX_COMMAND_LENGTH);
 		// Before we do anything with that command, convert it to an std::string
 		string command = commandChars;
-		interpretCommand(command, &prompt);
+		interpretCommand(command, prompt);
 	}
 }

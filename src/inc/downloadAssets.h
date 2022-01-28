@@ -1,6 +1,8 @@
 #pragma once
 #pragma comment(lib, "src\\inc\\libs\\LiteUnzip\\LiteUnzip.lib")
 
+#include "inc/defines.h"
+
 #include <iostream>
 #include <string>
 #include <stdio.h>

@@ -11,5 +11,5 @@ using std::string;
 
 
 string initCommandLine();
-void loop(string prompt);
-bool checkDataDir(string arg1);
+void loop(string *prompt);
+USI checkDataDir(string arg1);

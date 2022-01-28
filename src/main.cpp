@@ -22,17 +22,19 @@ int main(int argc, char** argv) {
 	while (!AllReady) {
 		if (!(tries >= 3)) {
 			prompt = initCommandLine();
-			DataDirExists = checkDataDir(arg1);
+			if (checkDataDir(arg1) == SUCCESS) {
+				DataDirExists = true;
+			}
 			tries++;
 		}
 		else {
 			cerr << "Tried to init simulator 3 times and failed on each, exiting...";
-			return 1;
+			return ERROR_INIT;
 		}
 
 		if (DataDirExists && prompt != "") {
 			AllReady = true;
 		}
 	}
-	loop(prompt);
+	loop(&prompt);
 }

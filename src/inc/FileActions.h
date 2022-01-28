@@ -16,7 +16,7 @@
 #include <unistd.h>
 #endif
 
-bool downloadAssets();
+USI downloadAssets();
 
 using std::string;
 using std::filesystem::path;

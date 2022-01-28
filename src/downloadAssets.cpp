@@ -4,13 +4,12 @@ static size_t write_data(void* ptr, size_t size, size_t nmemb, void* stream) {
     size_t written = fwrite(ptr, size, nmemb, (FILE*)stream);
     return written;
 }
-bool downloadAssets() {
+USI downloadAssets() {
     cout << "=============DOWNLOADING ASSETS============\r\n";
     CURL* curl_handle;
     static const char* pagefilename = "list.txt";
     FILE* pagefile;
     try {
-
         curl_global_init(CURL_GLOBAL_ALL);
 
         /* init the curl session */
@@ -30,7 +29,7 @@ bool downloadAssets() {
     }
     catch (...) {
         cerr << "Failed to set up the downloader!   Exiting...\r\n";
-        exit(1);
+        return ERROR_CURL_SETUP_FAIL;
     }
     try {
         if (pagefile) {
@@ -52,7 +51,7 @@ bool downloadAssets() {
     }
     catch (...) {
         cerr << "Error occurred trying to download assets for the program!  Exiting...\r\n";
-        exit(1);
+        return ERROR_ASSET_DOWNLOAD;
     }
-    return true;
+    return SUCCESS;
 }

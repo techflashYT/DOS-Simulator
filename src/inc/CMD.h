@@ -9,3 +9,6 @@ using std::string;
 using std::cout;
 
 void ListDir(string prompt);
+USI ChangeDir(string dir, string *prompt);
+
+using std::cerr;
