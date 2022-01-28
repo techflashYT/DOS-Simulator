@@ -1,19 +1,20 @@
 #include "inc/FileActions.h"
 string pathString = "";
 string origPath = "";
+string SIM_WORKING_DIR = "";
 bool MAIN_DIR_GOOD = false;
 bool A_DRIVE_GOOD = false;
 bool B_DRIVE_GOOD = false;
 bool C_DRIVE_GOOD = false;
 bool CONFIG_DIR_GOOD = false;
 bool ASSETS_DOWNLOADED = false;
+struct stat b;
 
-bool checkDataDir(string arg1) {
+USI checkDataDir(string arg1) {
 	string username;
 #ifdef _WIN32
-	struct stat b;
-	string a = "C:\\Temp";
-	if (stat(a.c_str(), &b) != 0) {
+	pathString = "C:\\Temp";
+	if (stat(pathString.c_str(), &b) != 0) {
 		system("mkdir C:\\Temp");
 	}
 	ofstream script("C:\\Temp\\script.bat");
@@ -27,42 +28,33 @@ bool checkDataDir(string arg1) {
 	unamefile.close();
 	system("rmdir /Q /S C:\\Temp");
 	pathString = "C:\\Users\\" + username + "\\Appdata\\Roaming\\Sanikdah Software";
-	a = pathString;
-	if (stat(a.c_str(), &b) != 0) {
+	if (stat(pathString.c_str(), &b) != 0) {
 		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	pathString.append("\\DOS Simulator");
-	a = pathString;
-	if (stat(a.c_str(), &b) != 0) {
+	if (stat(pathString.c_str(), &b) != 0) {
 		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
 	origPath = pathString;
-	pathString.append("\\A_DRIVE");
-	a = pathString;
-	if (stat(a.c_str(), &b) != 0) {
+	pathString = origPath + "\\A_DRIVE";
+	if (stat(pathString.c_str(), &b) != 0) {
 		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
-	pathString = origPath;
-	pathString.append("\\B_DRIVE");
-	a = pathString;
-	if (stat(a.c_str(), &b) != 0) {
+	pathString = origPath + "\\B_DRIVE";
+	if (stat(pathString.c_str(), &b) != 0) {
 		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
-	pathString = origPath;
-	pathString.append("\\C_DRIVE");
-	a = pathString;
-	if (stat(a.c_str(), &b) != 0) {
+	pathString = origPath + "\\C_DRIVE";
+	if (stat(pathString.c_str(), &b) != 0) {
 		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
-	pathString = origPath;
-	pathString.append("\\CONFIG");
-	a = pathString;
-	if (stat(a.c_str(), &b) != 0) {
+	pathString = origPath + "\\CONFIG";
+	if (stat(pathString.c_str(), &b) != 0) {
 		string cmd = "mkdir \"" + pathString + "\"";
 		system(cmd.c_str());
 	}
@@ -82,7 +74,7 @@ bool checkDataDir(string arg1) {
 		pathString = "/root/Sanikdah Software/";
 	}
 	else {
-		pathString.append(username + "Sanikdah Software");
+		pathString.append(username + "Sanikdah Software/DOS Simulator");
 	}
 #endif
 
@@ -140,8 +132,7 @@ bool checkDataDir(string arg1) {
 	}
 
 
-	pathString = origPath;
-	pathString.append("\\B_DRIVE");
+	pathString = origPath + "\\B_DRIVE";
 	path = pathString; // Constructing the path from a string is possible.
 	if (is_directory(path, ec)) {
 		B_DRIVE_GOOD = true;
@@ -167,8 +158,7 @@ bool checkDataDir(string arg1) {
 		std::exit(1);
 	}
 
-	pathString = origPath;
-	pathString.append("\\C_DRIVE");
+	pathString = origPath + "\\C_DRIVE";
 	path = pathString; // Constructing the path from a string is possible.
 	if (is_directory(path, ec)) {
 		C_DRIVE_GOOD = true;
@@ -194,8 +184,7 @@ bool checkDataDir(string arg1) {
 		std::exit(1);
 	}
 
-	pathString = origPath;
-	pathString.append("\\CONFIG");
+	pathString = origPath + "\\CONFIG";
 	path = pathString; // Constructing the path from a string is possible.
 	if (is_directory(path, ec)) {
 		CONFIG_DIR_GOOD = true;
@@ -255,19 +244,26 @@ bool checkDataDir(string arg1) {
 		}
 
 	}
+
 	if (!ASSETS_DOWNLOADED) {
-		ASSETS_DOWNLOADED = downloadAssets();
-		if (ASSETS_DOWNLOADED) {
+		if (downloadAssets() == SUCCESS) {
 			// Assets are now downloaded, so set the file in the config dir.
 			string assetsFileLoc = origPath + "\\CONFIG\\ASSETSDOWNLOADED";
 			ofstream assetsDownloadedFile(assetsFileLoc, std::ios::out);
 			assetsDownloadedFile.close();
+			ASSETS_DOWNLOADED = true;
 		}
 	}
-	if (MAIN_DIR_GOOD && A_DRIVE_GOOD && B_DRIVE_GOOD && C_DRIVE_GOOD && ASSETS_DOWNLOADED) {
-		return true;
+	if (!MAIN_DIR_GOOD) {
+		return ERROR_MAIN_DIR_CORRUPT;
 	}
-	return false;
+	if (!(A_DRIVE_GOOD && B_DRIVE_GOOD && C_DRIVE_GOOD)) {
+		return ERROR_DRIVE_DIRS_CORRUPT;
+	}
+	if (!ASSETS_DOWNLOADED) {
+		return ERROR_ASSETS_NOT_DOWNLOADED;
+	}
+	return SUCCESS;
 }
 
 
@@ -293,13 +289,13 @@ void ListDir(string prompt) {
 #endif
 	pos = pathToLook.find(find);
 	if (firstCharPrompt == "A") {
-		pathToLook.append("\\A_DRIVE");
+		pathToLook.append("\\A_DRIVE\\" + SIM_WORKING_DIR);
 	}
 	if (firstCharPrompt == "B") {
-		pathToLook.append("\\B_DRIVE");
+		pathToLook.append("\\B_DRIVE\\" + SIM_WORKING_DIR);
 	}
 	if (firstCharPrompt == "C") {
-		pathToLook.append("\\C_DRIVE");
+		pathToLook.append("\\C_DRIVE\\" + SIM_WORKING_DIR);
 	}
 
 	for (const auto& entry : directory_iterator(pathToLook)) {
@@ -328,13 +324,83 @@ void ListDir(string prompt) {
 		}
 		size_t pos = pathStr.find(find);
 		string pathSubStr = pathStr.substr(pos + 8);
-		string fullPathStr = pathSubStr;
+		string fullPathStr = "";
+		if (SIM_WORKING_DIR == "") {
+			fullPathStr = pathSubStr;
+		}
+		else {
+			pos = pathSubStr.find(SIM_WORKING_DIR);
+			pathSubStr = pathSubStr.substr(pos + SIM_WORKING_DIR.length());
+			pathSubStr = pathSubStr.substr(1); // Cut off initial forward slash
+			fullPathStr = pathSubStr;
+		}
 		cout << fullPathStr;
 		if (isDir) {
-			cout << "  <DIR>\r\n";
+			cout << "    <DIR>\r\n"; // TODO: Make this appear always 4 characters after the
+								     // longest file or directory name
 		}
 		else {
 			cout << "\r\n";
 		}
 	}
+}
+
+USI ChangeDir(string dir, string *prompt) {
+	bool changedDir = false;
+	string firstCharPrompt = prompt->substr(0, 1);
+	string CD_DIR = "";
+	//if (prompt->length() >= 5) {
+	//	size_t a = prompt->find(">");
+	//	SIM_WORKING_DIR = prompt->substr(4, a - 1);
+	//}
+
+#ifdef _WIN32
+	if (SIM_WORKING_DIR == "") {
+		CD_DIR = origPath + "\\" + firstCharPrompt + "_DRIVE\\" + dir;
+	}
+	else {
+		CD_DIR = origPath + "\\" + firstCharPrompt + "_DRIVE\\" + SIM_WORKING_DIR + "\\" + dir;
+	}
+	if (stat(CD_DIR.c_str(), &b) != 0) {
+		// doesn't exist, throw error
+		return WARNING_NONEXISTENT_DIRECTORY;
+	}
+	(void)_chdir(CD_DIR.c_str());
+	changedDir = true;
+#else
+	string CD_DIR = origPath + "/" + firstCharPrompt + "_DRIVE/" + SIM_WORKING_DIR + "/" + dir;
+	if (stat(CD_DIR.c_str(), &b) != 0) {
+		// doesn't exist, throw error
+		return WARNING_NONEXISTENT_DIRECTORY;
+	}
+	(void)chdir(CD_DIR.c_str());
+	changedDir = true;
+#endif
+	if (changedDir) {
+		if (SIM_WORKING_DIR == "") {
+			if (dir == "..") {
+				*prompt = firstCharPrompt + ":\\" + ">";
+				SIM_WORKING_DIR = SIM_WORKING_DIR + "\\";
+			}
+			else {
+				*prompt = firstCharPrompt + ":\\" + dir + ">";
+				SIM_WORKING_DIR = SIM_WORKING_DIR + "\\" + dir;
+			}
+		}
+		else {
+			if (dir == "..") {
+				*prompt = firstCharPrompt + ":" + SIM_WORKING_DIR + "\\" + ">";
+				SIM_WORKING_DIR = SIM_WORKING_DIR + "\\";
+			}
+			else {
+				*prompt = firstCharPrompt + ":" + SIM_WORKING_DIR + "\\" + dir + ">";
+				SIM_WORKING_DIR = SIM_WORKING_DIR + "\\" + dir;
+			}
+		}
+		return SUCCESS;
+	}
+	else {
+		return ERROR_DIRECTORY_NOT_CHANGED;
+	}
+	return ERROR_FELL_THROUGH_IF_ELSE;
 }
