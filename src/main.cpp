@@ -46,6 +46,9 @@ int main(int argc, char** argv) {
 			AllReady = true;
 		}
 	}
+#ifdef debugMode
+	debugModeSelect();
+#endif
 	loop(&prompt);
 	return GENERIC_FAIL;
 }
