@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\CMD.cpp" />
+    <ClCompile Include="src\debugMode.cpp" />
     <ClCompile Include="src\downloadAssets.cpp" />
     <ClCompile Include="src\FileActions.cpp" />
     <ClCompile Include="src\loop.cpp" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\inc\CMD.h" />
+    <ClInclude Include="src\inc\debugMode.h" />
     <ClInclude Include="src\inc\downloadAssets.h" />
     <ClInclude Include="src\inc\FileActions.h" />
     <ClInclude Include="src\inc\defines.h" />
