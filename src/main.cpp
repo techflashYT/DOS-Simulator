@@ -29,6 +29,12 @@ int main(int argc, char** argv) {
 			else if (retValue == ERROR_MAIN_DIR_CORRUPT) {
 				cerr << ERROR_MAIN_DIR_CORRUPT_STR;
 			}
+			else if (retValue == ERROR_DRIVE_DIRS_CORRUPT) {
+				cerr << ERROR_DRIVE_DIRS_CORRUPT_STR;
+			}
+			else if (retValue == ERROR_ASSETS_NOT_DOWNLOADED) {
+				cerr << ERROR_ASSETS_NOT_DOWNLOADED_STR;
+			}
 			tries++;
 		}
 		else {
