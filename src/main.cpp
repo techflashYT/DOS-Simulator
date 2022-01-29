@@ -22,8 +22,12 @@ int main(int argc, char** argv) {
 	while (!AllReady) {
 		if (!(tries >= 3)) {
 			prompt = initCommandLine();
-			if (checkDataDir(arg1) == SUCCESS) {
+			USI retValue = checkDataDir(arg1);
+			if (retValue == SUCCESS) {
 				DataDirExists = true;
+			}
+			else if (retValue == ERROR_MAIN_DIR_CORRUPT) {
+				cerr << ERROR_MAIN_DIR_CORRUPT_STR;
 			}
 			tries++;
 		}
@@ -37,4 +41,5 @@ int main(int argc, char** argv) {
 		}
 	}
 	loop(&prompt);
+	return GENERIC_FAIL;
 }
