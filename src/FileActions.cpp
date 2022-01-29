@@ -410,3 +410,52 @@ USI ChangeDir(string dir, string *prompt) {
 	}
 	return ERROR_FELL_THROUGH_IF_ELSE;
 }
+
+
+USI makeDir(string dir, string prompt) {
+	string firstCharPrompt = prompt.substr(0, 1);
+	//Creating File
+	string a = origPath + "\\" + firstCharPrompt + "_DRIVE\\" + dir;
+#ifdef _WIN32
+	if (_mkdir(a.c_str()) == -1) {
+#else
+	if (mkdir(a.c_str()) == -1) {
+#endif
+
+		if (errno == 17) {
+			return ERROR_FILE_FOLDER_EXISTS;
+		}
+		return GENERIC_FAIL;
+	}
+
+	else {
+		return SUCCESS;
+	}
+}
+
+USI removeDir(string dir, string prompt) {
+	string firstCharPrompt = prompt.substr(0, 1);
+	string a = "";
+	bool empty = is_empty(dir);
+	if (empty) {
+#ifdef _WIN32
+		if (SIM_WORKING_DIR != "") {
+			a = origPath + "\\" + firstCharPrompt + "_DRIVE\\" + SIM_WORKING_DIR + "\\" + dir;
+		}
+		else {
+			a = origPath + "\\" + firstCharPrompt + "_DRIVE\\" + dir;
+		}
+#else
+		if (SIM_WORKING_DIR != "") {
+			a = origPath + "/" + firstCharPrompt + "_DRIVE/" + SIM_WORKING_DIR + "/" + dir;
+		}
+		else {
+			a = origPath + "/" + firstCharPrompt + "_DRIVE/" + dir;
+		}
+#endif
+		remove(a);
+	}
+	else {
+		return ERROR_DIRECTORY_NOT_EMPTY;
+	}
+}

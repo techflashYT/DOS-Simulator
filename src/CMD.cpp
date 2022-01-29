@@ -34,11 +34,48 @@ void interpretCommand(string command, string *prompt) {
 			cerr << ERROR_DIRECTORY_NOT_FOUND;
 		}
 	}
+	else if (command.starts_with("chdir")) { // If finds "chdir" at the beginning of the string
+		string dirToCD_to = command.substr(6);
+		USI ret = ChangeDir(dirToCD_to, prompt);
+		if (ret == SUCCESS) {
+			return;
+		}
+		else if (ret == WARNING_NONEXISTENT_DIRECTORY) {
+			cerr << ERROR_DIRECTORY_NOT_FOUND;
+		}
+	}
 	// handle misspellings of cd
 	else if (command == "cf" || command == "vd" || command == "vf" || command == "cs" || command == "xd") {
 		cout << "Unknown command!  Did you mean \"cd\"?\r\n";
 	}
-
+	else if (command.starts_with("md")) {
+		string dirToMake = command.substr(3);
+		USI ret = makeDir(dirToMake, *prompt);
+		if (ret == SUCCESS) {
+			return;
+		}
+		else if (ret == GENERIC_FAIL) {
+			cerr << "Error";
+			return;
+		}
+		else if (ret == ERROR_FILE_FOLDER_EXISTS) {
+			cerr << ERROR_FILE_FOLDER_EXISTS_STR;
+		}
+	}
+	else if (command.starts_with("mkdir")) {
+		string dirToMake = command.substr(6);
+		USI ret = makeDir(dirToMake, *prompt);
+		if (ret == SUCCESS) {
+			return;
+		}
+		else if (ret == GENERIC_FAIL) {
+			cerr << "Error";
+			return;
+		}
+		else if (ret == ERROR_FILE_FOLDER_EXISTS) {
+			cerr << ERROR_FILE_FOLDER_EXISTS_STR;
+		}
+	}
 
 	else if (command == "cls") {
 #ifdef _WIN32

@@ -29,3 +29,6 @@ using std::ifstream;
 using std::ofstream;
 using std::filesystem::directory_iterator;
 using std::stringstream;
+using std::filesystem::is_empty;
+using std::filesystem::remove;
+using std::filesystem::remove_all;
